@@ -1,0 +1,19 @@
+<div class="text-center">
+  <img src="https://i.imgur.com/8t65gK5.png" class="img-thumbnail m-4" style="width:100px;"><br>
+  <button class="btn btn-secondary m-3" (click)="settimer()" *ngIf="timer.timeleft>0">{{timer.timer_button}}</button>
+          
+          <div *ngIf="timer.pause==false">
+            <h2> Game Started. </h2>
+            <h4><kbd class="p-2">{{ timer.text }}</kbd></h4>
+            <h4 class="text-muted mt-2 p-4">time to find {{this.g.round_info.spys}} spys</h4>
+          </div>
+
+          <div *ngIf="timer.timeleft<=0" class="bg-light mt-2">
+            <h1 class="mb-3">Time's up</h1>
+            <img src="https://i.imgur.com/Qx1TqRY.png" class="img-fluid img-thumbnail">
+          </div>
+            
+          
+  <br>
+  <button (click)="this.g.rest()" class="btn btn-outline-primary mt-5">New Game</button>
+</div>

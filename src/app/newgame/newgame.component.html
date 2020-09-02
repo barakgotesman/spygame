@@ -1,0 +1,43 @@
+<div class="row">
+    <div class=" jumbotron col-12 col-md-6 col-sm-12">
+      <h1 class="text-center p-2">New Game</h1>
+    <form class=" m-2 ">
+      <div class="form-group row">
+        <div class="col-8">
+        <h3>Players: <b>{{players}}</b></h3>
+        </div>
+        <div class="col-4">
+        <button type="button" class="btn btn-dark mr-1 p-3" (click)="addplayer(1)">+</button>
+        <button type="button" class="btn btn-dark p-3" (click)="addplayer(-1)">-</button>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-8">
+          <h3>Spys: <b>{{spys}}</b></h3>
+        </div>
+          <div class="col-4">
+          <button type="button" class="btn btn-dark mr-1 p-3" (click)="addspy(1)">+</button>
+          <button type="button" class="btn btn-dark p-3" (click)="addspy(-1)">-</button>
+          </div>
+      </div>
+
+      <div class="form-group row mx-auto">
+        <button class="btn btn-primary btn-block col-8 m-2" (click)="newgame()">START</button>
+        <button class="btn btn-outline-dark col-2 m-2 " (click)="this.g.gamestatus=3;"><i class="fas fa-sliders-h"></i></button>
+      </div>
+
+      
+  </form>
+</div>
+
+
+  <div class="text-center col-12 col-md-6">
+      <img src="https://images.unsplash.com/photo-1595366014461-5cf6a65345c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=780&q=80" class="img-fluid img-thumbnail" style="height:250px;">
+     <h2 class="lead">Will you find the spy?
+</h2>
+  </div>
+
+
+
+</div>
+

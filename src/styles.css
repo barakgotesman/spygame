@@ -1,0 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+body, html, .container
+{
+font-family: 'Bangers', cursive !important;
+}

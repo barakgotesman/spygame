@@ -1,0 +1,96 @@
+
+<button class="mx-auto btn btn-dark p-3 text-left" (click)="this.g.gamestatus=0;">Back</button><br><br>
+
+
+<div class="card">
+  <div class="card-header">
+  <div class="btn-group btn-group-lg d-block text-center" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-info" (click)="screen=0;">Locations</button>
+    <button type="button" class="btn btn-info" (click)="screen=1;">Timer</button>
+    
+  </div>
+</div>
+  <div class="card-body"> 
+    <div *ngIf="screen==0">
+      <form class="mb-2 border p-4">
+        <h3>Add new location:</h3>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-3 col-form-label">name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control form-control-lg" id="staticEmail"  placeholder="enter your location name..." #name >
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="inputPassword" class="col-sm-3 col-form-label">Image URL</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control form-control-lg" id="inputPassword" placeholder="enter url.." #img>
+            <small class="form-text text-muted text-left">you dont must enter this input.</small>
+          </div>
+        </div>
+        <div class="form-group row">
+
+          <div class="col-sm-12">
+            <button class=" btn btn-info btn-block btn-lg" (click)="add_loc(name.value,img.value)">Add new location</button>
+          </div>
+
+          <div class="col-sm-12 mt-3">
+            <button class=" btn  btn-outline-danger btn-block btn-lg"  (click)="rest();">REST LIST TO DEFUALT</button>
+          </div>
+
+        </div>
+      </form>
+
+      <div class="row mb-2">
+        <h3 class="col-9">edit game locations</h3>
+        <div class="col-3">
+            <button class="btn btn-light btn-sm float-right" (click)="change_view()">
+              <i *ngIf="showkind==true" class="fas fa-th-list" ></i>
+              <i *ngIf="showkind==false" class="fas fa-th "></i>
+            </button>
+        </div>
+      </div>
+
+      <table class="table table-striped table-sm" *ngIf="showkind==false">
+        <thead>
+          <tr>
+            <th style="w">#</th>
+            <th>name</th>
+            <th>image</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loc of this.g.locations; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{loc.name}}</td>
+            <td><small>{{loc.img}}</small></td>
+            <td><button class="btn btn-danger" (click)="del_loc(i)"><i class="fas fa-minus-circle"></i></button></td>
+          </tr>
+
+        </tbody>
+      </table>
+
+      <div class="row" *ngIf="showkind==true">
+        <div class="col-sm-6 col-md-6 p-2" *ngFor="let loc of this.g.locations; let i = index">
+          <div>
+          <img src="{{loc.img}}" class="img-fluid text-center" style="height:18rem;">
+          <h6 class="position-absolute p-3 bg-white" style="top:2px; left:2px;">#{{i+1}} - {{loc.name}}</h6>
+          <button class="btn btn-danger btn-block mt-2" (click)="del_loc(i)">Delete</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div *ngIf="screen==1">
+      <form>
+        <div class="form-group">   
+              <label>Timer in min</label>
+              <input type="number" min="7" max="60" class="form-control form-control-lg" style="width:10rem;" value={{this.g.round_info.time}} 
+              (keyup)="update_timer(timer_input.value)" #timer_input>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

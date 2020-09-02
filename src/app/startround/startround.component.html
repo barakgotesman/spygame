@@ -1,0 +1,28 @@
+<div class="card mx-auto" style="width: 20rem;">
+	<button type="button" class="btn btn-outline-dark btn-sm float-left m-2" (click)="this.g.rest()">
+    Cancel Game
+    </button>
+	
+	<div class="card-body">
+    <h4 class="card-title display-4 text-center">Player {{player_num}}</h4>
+		<p class="card-text p-2">
+			<span class="d-block text-light bg-dark text-center p-4" style="height: 200px !important" *ngIf="reveal==false else ShowRole" (click)="toggle()">
+        show me my role
+        </span>
+			<ng-template #ShowRole>
+
+			        <div *ngIf = "spyShow==true else ShowRolePlayer">
+                <span>Spy</span><br>
+                <img class="card-img-bottom" src="https://i.imgur.com/UPHpP9A.jpg" alt="Card image cap">
+			        </div>
+
+              <ng-template #ShowRolePlayer>
+                {{this.g.locations[this.g.round_info.game_loc].name}}
+                 <img class="card-img-bottom" src="{{this.g.locations[this.g.round_info.game_loc].img}}" alt="Card image cap" *ngIf="this.g.locations[this.g.round_info.game_loc].img!=''">
+			        </ng-template>
+              <br><hr>
+        <button (click)="reveal_next()" class="btn btn-primary btn-lg btn-block">Got it</button>
+			</ng-template>
+		</p>
+	</div>
+</div>
