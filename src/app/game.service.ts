@@ -9,7 +9,7 @@ export class GameService
   2 - game started
   3 - game settings
   */
-  game_ver = 0.1;
+  game_ver = 0.2;
     gamestatus=0;
     round_info=
     { 
