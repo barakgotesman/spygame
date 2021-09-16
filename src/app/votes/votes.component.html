@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Player</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let player of votes; let x =index">
+      <th scope="row">Player {{x+1}}</th>
+      <td>{{ votes[x].amount }}</td>
+      <td>
+        <button class="btn btn-primary btn-lg" (click)="addVote(x)">+</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
