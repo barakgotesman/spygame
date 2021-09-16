@@ -11,9 +11,13 @@ export class VotesComponent implements OnInit {
 
   votes = [];
   showTable = false;
-  
+
   ngOnInit() {
     this.votes = Array(this.g.round_info.players).fill({ amount: 0 });
+  }
+
+  showTableTrigger(){
+    this.showTable = !this.showTable;
   }
 
   addVote(indexPlayer: number) {

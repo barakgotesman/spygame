@@ -1,4 +1,8 @@
-<table class="table table-striped">
+
+<button class="btn btn-primary" (click)="showTableTrigger()">
+  {{ showTable ? 'hide Votes' : 'show Votes'}}</button>
+
+<table class="table table-striped" *ngIf="showTable">
   <thead>
     <tr>
       <th scope="col">Player</th>
