@@ -4,6 +4,7 @@
 
 <table class="table table-striped" *ngIf="showTable">
   <thead>
+    <tr colspan=3>votes to take: {{ votesToTake }}</tr>
     <tr>
       <th scope="col">Player</th>
       <th scope="col">Amount</th>
@@ -11,11 +12,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let player of votes; let x =index">
+    <tr *ngFor="let player of players; let x =index">
       <th scope="row">Player {{x+1}}</th>
-      <td>{{ votes[x].amount }}</td>
+      <td>{{ players[x].amount }}</td>
       <td>
-        <button class="btn btn-primary btn-lg" (click)="addVote(x)">+</button>
+        <button class="btn btn-primary btn-lg mr-2" (click)="addVote(x)">+</button>
+        <button class="btn btn-primary btn-lg" (click)="removeVote(x)">-</button>
       </td>
     </tr>
   </tbody>

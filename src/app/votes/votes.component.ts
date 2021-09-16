@@ -9,18 +9,33 @@ import { GameService } from '../game.service';
 export class VotesComponent implements OnInit {
   constructor(public g: GameService) {}
 
-  votes = [];
   showTable = false;
+  players = Array(this.g.round_info.players);
+  votesToTake = this.players.length;
 
   ngOnInit() {
-    this.votes = Array(this.g.round_info.players).fill({ amount: 0 });
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i] = { index: i, amount: 0 };
+    }
   }
 
-  showTableTrigger(){
+  showTableTrigger() {
     this.showTable = !this.showTable;
   }
 
   addVote(indexPlayer: number) {
-    this.votes[indexPlayer].amount += 1;
+    if(this.votesToTake>0)
+    {
+      this.players[indexPlayer].amount += 1;
+      this.votesToTake -=1;
+    }
+  }
+
+  removeVote(indexPlayer: number) {
+    if (this.players[indexPlayer].amount - 1 < 0) {
+      return;
+    }
+    this.votesToTake +=1;
+    this.players[indexPlayer].amount -= 1;
   }
 }
